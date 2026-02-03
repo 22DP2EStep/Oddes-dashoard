@@ -27,10 +27,10 @@ export interface Database {
       //   }
       // }
       [key: string]: {
-        Row: Record<string, any>
-        Insert: Record<string, any>
-        Update: Record<string, any>
-      }
-    }
-  }
+        Row: Record<string, any>;
+        Insert: Record<string, any>;
+        Update: Record<string, any>;
+      };
+    };
+  };
 }

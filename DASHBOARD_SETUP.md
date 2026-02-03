@@ -7,6 +7,7 @@ This Vue.js dashboard displays data from your Supabase tables with interactive c
 ### 1. Environment Configuration
 
 1. Copy `.env.example` to `.env.local`:
+
    ```bash
    cp .env.example .env.local
    ```
@@ -22,20 +23,24 @@ This Vue.js dashboard displays data from your Supabase tables with interactive c
 Update the following files with your table information:
 
 #### `src/views/HomeView.vue`
+
 - Line 65: Change `TABLE_NAME` to your actual table name
 - Line 66: Change `GROUP_BY_COLUMN` to a column you want to group by for charts
 - Lines 91-96: Update `tableColumns` array to match your table structure
 
 #### `src/views/DataView.vue`
+
 - Line 85: Change `TABLE_NAME` to your actual table name
 - Lines 92-98: Update `tableColumns` array to match your table structure
 
 #### `src/services/dataService.ts`
+
 - Lines 6-12: Update the `DataItem` interface to match your table structure
 
 ### 3. Table Structure Example
 
 If your table has these columns:
+
 - `id` (number, primary key)
 - `name` (text)
 - `email` (text)
@@ -47,21 +52,21 @@ Update the interfaces like this:
 ```typescript
 // In src/services/dataService.ts
 export interface DataItem {
-  id: number
-  name: string
-  email: string
-  status: string
-  created_at: string
+  id: number;
+  name: string;
+  email: string;
+  status: string;
+  created_at: string;
 }
 
 // In HomeView.vue and DataView.vue
 const tableColumns = [
-  { key: 'id', label: 'ID', type: 'number' },
-  { key: 'name', label: 'Name', type: 'text' },
-  { key: 'email', label: 'Email', type: 'text' },
-  { key: 'status', label: 'Status', type: 'text' },
-  { key: 'created_at', label: 'Created At', type: 'date' },
-]
+  { key: "id", label: "ID", type: "number" },
+  { key: "name", label: "Name", type: "text" },
+  { key: "email", label: "Email", type: "text" },
+  { key: "status", label: "Status", type: "text" },
+  { key: "created_at", label: "Created At", type: "date" },
+];
 ```
 
 ### 4. Run the Development Server
@@ -89,15 +94,18 @@ npm run dev
 ## Customization
 
 ### Adding New Charts
+
 1. Add chart logic to `src/services/dataService.ts`
 2. Import and use `ChartWidget` component in your views
 3. Supported chart types: bar, line, doughnut, pie
 
 ### Adding New Statistics
+
 1. Update `getStatistics()` method in `src/services/dataService.ts`
 2. Add new `StatCard` components to your dashboard
 
 ### Customizing Styles
+
 - Update Tailwind configuration in `tailwind.config.js`
 - Modify component styles in individual `.vue` files
 - Global styles in `src/assets/main.css`

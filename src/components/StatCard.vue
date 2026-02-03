@@ -16,26 +16,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed } from "vue";
 
 interface Props {
-  title: string
-  value: string | number
-  icon: any
-  change?: number
-  changeType?: 'increase' | 'decrease'
+  title: string;
+  value: string | number;
+  icon: any;
+  change?: number;
+  changeType?: "increase" | "decrease";
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
 const changeColor = computed(() => {
-  if (!props.change) return ''
-  return props.changeType === 'increase' ? 'text-green-600' : 'text-red-600'
-})
+  if (!props.change) return "";
+  return props.changeType === "increase" ? "text-green-600" : "text-red-600";
+});
 
 const changeText = computed(() => {
-  if (!props.change) return ''
-  const sign = props.changeType === 'increase' ? '+' : '-'
-  return `${sign}${Math.abs(props.change)}% from yesterday`
-})
+  if (!props.change) return "";
+  const sign = props.changeType === "increase" ? "+" : "-";
+  return `${sign}${Math.abs(props.change)}% from yesterday`;
+});
 </script>

@@ -7,16 +7,10 @@
           <h1>Dashboard</h1>
         </div>
         <div class="nav-links">
-          <RouterLink 
-            to="/" 
-            :class="{ 'active': $route.path === '/' }"
-          >
+          <RouterLink to="/" :class="{ active: $route.path === '/' }">
             Overview
           </RouterLink>
-          <RouterLink 
-            to="/data" 
-            :class="{ 'active': $route.path === '/data' }"
-          >
+          <RouterLink to="/data" :class="{ active: $route.path === '/data' }">
             Data Table
           </RouterLink>
         </div>
@@ -33,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <style scoped>

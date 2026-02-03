@@ -46,7 +46,11 @@
                 :key="`${item.id}-${column.key}`"
                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
               >
-                <slot :name="`cell-${column.key}`" :item="item" :value="item[column.key]">
+                <slot
+                  :name="`cell-${column.key}`"
+                  :item="item"
+                  :value="item[column.key]"
+                >
                   {{ formatCellValue(item[column.key], column.type) }}
                 </slot>
               </td>
@@ -61,10 +65,14 @@
       </div>
 
       <!-- Pagination -->
-      <div v-if="showPagination && totalCount > 0" class="px-6 py-3 border-t border-gray-200">
+      <div
+        v-if="showPagination && totalCount > 0"
+        class="px-6 py-3 border-t border-gray-200"
+      >
         <div class="flex items-center justify-between">
           <div class="text-sm text-gray-700">
-            Showing {{ startRecord }} to {{ endRecord }} of {{ totalCount }} results
+            Showing {{ startRecord }} to {{ endRecord }} of
+            {{ totalCount }} results
           </div>
           <div class="flex space-x-2">
             <button
@@ -89,26 +97,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { DataItem } from '@/services/dataService'
+import { computed } from "vue";
+import type { DataItem } from "@/services/dataService";
 
 interface Column {
-  key: string
-  label: string
-  type?: 'text' | 'date' | 'number' | 'boolean'
+  key: string;
+  label: string;
+  type?: "text" | "date" | "number" | "boolean";
 }
 
 interface Props {
-  title: string
-  subtitle?: string
-  data: DataItem[]
-  columns: Column[]
-  loading?: boolean
-  error?: string
-  showPagination?: boolean
-  currentPage?: number
-  pageSize?: number
-  totalCount?: number
+  title: string;
+  subtitle?: string;
+  data: DataItem[];
+  columns: Column[];
+  loading?: boolean;
+  error?: string;
+  showPagination?: boolean;
+  currentPage?: number;
+  pageSize?: number;
+  totalCount?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -116,33 +124,33 @@ const props = withDefaults(defineProps<Props>(), {
   showPagination: false,
   currentPage: 0,
   pageSize: 10,
-  totalCount: 0
-})
+  totalCount: 0,
+});
 
 const emit = defineEmits<{
-  'page-change': [page: number]
-}>()
+  "page-change": [page: number];
+}>();
 
 const startRecord = computed(() => {
-  return props.currentPage * props.pageSize + 1
-})
+  return props.currentPage * props.pageSize + 1;
+});
 
 const endRecord = computed(() => {
-  return Math.min((props.currentPage + 1) * props.pageSize, props.totalCount)
-})
+  return Math.min((props.currentPage + 1) * props.pageSize, props.totalCount);
+});
 
-const formatCellValue = (value: any, type: string = 'text'): string => {
-  if (value === null || value === undefined) return '-'
-  
+const formatCellValue = (value: any, type: string = "text"): string => {
+  if (value === null || value === undefined) return "-";
+
   switch (type) {
-    case 'date':
-      return new Date(value).toLocaleDateString()
-    case 'number':
-      return typeof value === 'number' ? value.toLocaleString() : value
-    case 'boolean':
-      return value ? 'Yes' : 'No'
+    case "date":
+      return new Date(value).toLocaleDateString();
+    case "number":
+      return typeof value === "number" ? value.toLocaleString() : value;
+    case "boolean":
+      return value ? "Yes" : "No";
     default:
-      return String(value)
+      return String(value);
   }
-}
+};
 </script>

@@ -27,14 +27,14 @@ Edit `src/views/HomeView.vue` around line 120, update the `TABLE_CONFIG`:
 
 ```javascript
 const TABLE_CONFIG = {
-  tableName: 'your_actual_table_name', // Your Supabase table name
+  tableName: "your_actual_table_name", // Your Supabase table name
   columns: {
-    value: 'amount',      // Column with numeric values (for sorting pipeline)
-    name: 'client_name',  // Column with names/titles to display
-    status: 'status',     // Column with status (Active, Inactive, etc.)
-    created_at: 'created_at' // Timestamp column
-  }
-}
+    value: "amount", // Column with numeric values (for sorting pipeline)
+    name: "client_name", // Column with names/titles to display
+    status: "status", // Column with status (Active, Inactive, etc.)
+    created_at: "created_at", // Timestamp column
+  },
+};
 ```
 
 ### 4. Example Table Structure
@@ -64,22 +64,24 @@ CREATE TABLE leads (
 
 ## Common Table Column Mappings
 
-| Dashboard Feature | Recommended Column Names |
-|-------------------|-------------------------|
-| Pipeline values | `amount`, `value`, `deal_size`, `revenue` |
-| Names/Titles | `name`, `client_name`, `company`, `title` |
-| Status tracking | `status`, `stage`, `phase` |
-| Creation date | `created_at`, `date_created`, `timestamp` |
+| Dashboard Feature | Recommended Column Names                  |
+| ----------------- | ----------------------------------------- |
+| Pipeline values   | `amount`, `value`, `deal_size`, `revenue` |
+| Names/Titles      | `name`, `client_name`, `company`, `title` |
+| Status tracking   | `status`, `stage`, `phase`                |
+| Creation date     | `created_at`, `date_created`, `timestamp` |
 
 ## Troubleshooting
 
 ### "Failed to load data from Supabase"
+
 1. Check your `.env.local` file has correct credentials
 2. Verify your table name is correct
 3. Make sure your table exists in Supabase
 4. Check browser console for detailed error messages
 
 ### "RLS Error" or Permission Denied
+
 1. In Supabase, go to **Authentication** > **Policies**
 2. For testing, you can disable RLS temporarily:
    ```sql
@@ -92,6 +94,7 @@ CREATE TABLE leads (
    ```
 
 ### No Data Showing
+
 1. Verify your table has data
 2. Check that column names in `TABLE_CONFIG` match your actual columns
 3. Look in browser console for JavaScript errors
@@ -99,6 +102,7 @@ CREATE TABLE leads (
 ## Next Steps
 
 Once connected, you can:
+
 - Customize the metrics calculations in `HomeView.vue`
 - Add more chart types using your data
 - Modify the pipeline stages based on your business logic

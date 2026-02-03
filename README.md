@@ -16,14 +16,17 @@ A modern, responsive dashboard built with Vue.js 3, Vite, TypeScript, and Tailwi
 ## Quick Start
 
 1. **Clone and Install**
+
    ```bash
    npm install
    ```
 
 2. **Configure Supabase**
+
    ```bash
    cp .env.example .env.local
    ```
+
    Update `.env.local` with your Supabase credentials.
 
 3. **Configure Your Table**
